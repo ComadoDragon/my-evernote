@@ -53,17 +53,30 @@ class DocumentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Document $document)
+    public function edit(Document $document): View
     {
-        //
+        Gate::authorize('update', $document);
+ 
+        return view('documents.edit', [
+            'document' => $document,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Document $document)
+    public function update(Request $request, Document $document): RedirectResponse
     {
-        //
+        Gate::authorize('update', $document);
+ 
+        $validated = $request->validate([
+            'title' => 'required|string|max:250',
+            'description' => 'required|string|max:255',
+        ]);
+ 
+        $document->update($validated);
+ 
+        return redirect(route('documents.index'));
     }
 
     /**
