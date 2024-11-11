@@ -14,7 +14,9 @@ class DocumentController extends Controller
      */
     public function index(): View
     {
-        return view('documents.index');
+        return view('documents.index', [
+            'documents' => Document::with('user')->latest()->get(),
+        ]);
     }
 
     /**
