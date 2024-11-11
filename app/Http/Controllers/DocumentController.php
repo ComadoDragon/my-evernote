@@ -34,6 +34,10 @@ class DocumentController extends Controller
             'title' => 'required|string|max:250',
             'description' => 'required|string|max:255',
         ]);
+
+        $request->user()->documents()->create($validated);
+
+        return redirect(route('documents.index'));
     }
 
     /**
