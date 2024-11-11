@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -27,9 +28,12 @@ class DocumentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:250',
+            'description' => 'required|string|max:255',
+        ]);
     }
 
     /**
