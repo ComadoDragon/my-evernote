@@ -45,7 +45,7 @@ class DocumentPolicy
      */
     public function delete(User $user, Document $document): bool
     {
-        //
+        return $this->update($user, $document);
     }
 
     /**

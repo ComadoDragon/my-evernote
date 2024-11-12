@@ -83,8 +83,12 @@ class DocumentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Document $document)
+    public function destroy(Document $document): RedirectResponse
     {
-        //
+        Gate::authorize('delete', $document);
+
+        $document->delete();
+
+        return redirect(route('documents.index'));
     }
 }
