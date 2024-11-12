@@ -6,7 +6,7 @@
             <div class="mb-4">
                 <input type="text" 
                 name="title" 
-                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">{{ old('title', $document->title) }}</input>
+                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" value="{{ old('title', $document->title) }}"/>
                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
             </div>
             <div class="mb-4">
@@ -14,7 +14,7 @@
                 name="description"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                 >{{ old('description', $document->description) }}</textarea>
-                <x-input-error :documents="$errors->get('description')" class="mt-2" />
+                <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>           
             <div class="mt-4 space-x-2">
                 <x-primary-button>{{ __('Save') }}</x-primary-button>
