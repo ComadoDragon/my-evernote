@@ -65,4 +65,7 @@
             @endforeach
         </div>
     </div>
+    @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
+    @endpush
 </x-app-layout>
