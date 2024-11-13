@@ -35,7 +35,7 @@ class DocumentController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:250',
-            'description' => 'required|string|max:255',
+            'description' => 'required|min:3',
         ]);
 
         $request->user()->documents()->create($validated);
@@ -72,7 +72,7 @@ class DocumentController extends Controller
  
         $validated = $request->validate([
             'title' => 'required|string|max:250',
-            'description' => 'required|string|max:255',
+            'description' => 'required|min:3',
         ]);
  
         $document->update($validated);
